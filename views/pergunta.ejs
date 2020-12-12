@@ -1,0 +1,36 @@
+<%- include ('partials/header.ejs') %>
+
+<body>
+  <%- include ('partials/navbar.ejs') %>
+  <div class="container">
+    <hr>
+    <h1> <%= pergunta.titulo %> </h1>
+    <p> <%= pergunta.descricao %> </p>
+    <hr>
+    <form method="POST" action="/responder">
+
+      <h4>Responda<strong>.me</strong></h4>
+      <textarea name="corpo" class="form-control" placeholder="Respoda aqui, ta ?"></textarea>
+      <button type="submit" class="btn btn-teste" style="margin-top: 15px;">Enviar Resposta</button>
+      <input type="hidden" name="pergunta" value="<%= pergunta.id %>">
+
+    </form>
+    <hr>
+    <h3 style="text-align: center;">Talvez isso ajude ...</h3>
+    <br>
+    <% respostas.forEach((resposta)=>{%>
+      <br>
+      <div class="card">
+       
+        <div class="card-body">
+          <h4 style="margin-top: 15px;"><%= resposta.corpo %></h4>
+         
+        </div>
+      </div>
+
+    <%})%>
+    
+  </div>
+  <%- include ('partials/footer.ejs') %>
+ 
+</body>
